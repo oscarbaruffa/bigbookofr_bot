@@ -1,4 +1,7 @@
 
+
+
+
 # Load libraries ----------------------------------------------------------
 
 library("googlesheets4")
@@ -30,16 +33,15 @@ book <- sample_n(books_source, 1) %>%
                       ".html#",
                       str_replace_all(str_to_lower(title), " ", "-")))
 
-
+book_status = paste(book[1, "title"], book[1, "url"], sep="\n")
 
 
 # Send tweet --------------------------------------------------------------
 
 
-# 
 # Create a token containing your Twitter keys
-rtweet::create_token(
-  app = "BigBookofR",  # the name of the Twitter app
+rbot_token <- rtweet::create_token(
+  app = "bigbookofr",  # the name of the Twitter app
   consumer_key = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
   consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
   access_token = Sys.getenv("TWITTER_ACCESS_TOKEN"),
@@ -48,4 +50,5 @@ rtweet::create_token(
 
 # Example: post a tweet via the API
 # The keys will are in your environment thanks to create_token()
-rtweet::post_tweet(status = "Hello, world5")
+rtweet::post_tweet(status = book_status,
+                   token = rbot_token)
