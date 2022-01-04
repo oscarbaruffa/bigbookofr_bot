@@ -15,7 +15,7 @@ jobs:
       
     steps:
       - uses: actions/checkout@main
-      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-r@main
       - name: Install googlesheets4 package
         run: Rscript -e 'install.packages("googlesheets4", dependencies = TRUE)'
         - name: Install rtweet package
