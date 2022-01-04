@@ -14,8 +14,8 @@ jobs:
       TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
       
     steps:
-      - uses: actions/checkout@master
-      - uses: r-lib/actions/setup-r@master
+      - uses: actions/checkout@main
+      - uses: r-lib/actions/setup-r@main
       - name: Install googlesheets4 package
         run: Rscript -e 'install.packages("googlesheets4", dependencies = TRUE)'
         - name: Install rtweet package
