@@ -2,7 +2,8 @@ name: bigbookofr_bot
 
 on:
   schedule:
-    - cron: '0 */6 * * *  # once 6 hours
+    - cron:  '0 */6 * * *'
+  
 
 jobs:
   bigbookofr_bot-post:
