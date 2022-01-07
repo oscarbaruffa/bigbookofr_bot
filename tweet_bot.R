@@ -20,7 +20,7 @@ gs4_deauth()
 books_source <- read_sheet("https://docs.google.com/spreadsheets/d/1vufdtrIzF5wbkWZUG_HGIBAXpT1C4joPx2qTh5aYzDg",
                            sheet = "books") %>% 
   separate_rows(chapters, sep = ";") %>% 
-  mutate(chapters <- str_trim(chapters, side=c("both")))
+  mutate(chapters = str_trim(chapters, side = "both"))
 
 
 
