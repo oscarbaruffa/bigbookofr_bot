@@ -23,7 +23,7 @@ books_source <- read_sheet("https://docs.google.com/spreadsheets/d/1vufdtrIzF5wb
   mutate(chapters = str_trim(chapters, side = "both"))
 
 
-
+head(books_source)
 
 # Choose book and generate url-------------------------------------------------------------
 
@@ -34,8 +34,11 @@ book <- sample_n(books_source, 1) %>%
                       ".html#",
                       str_replace_all(str_to_lower(title), " ", "-")))
 
+book
+
 book_status = paste(book[1, "title"], book[1, "url"], sep="\n")
 
+book_status
 
 # Send tweet --------------------------------------------------------------
 
