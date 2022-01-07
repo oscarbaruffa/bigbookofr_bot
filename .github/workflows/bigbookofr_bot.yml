@@ -1,7 +1,7 @@
 name: bigbookofr_bot
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 */4 * * *'
 jobs:
   bigbookofr_bot-post:
     runs-on: macOS-latest
