@@ -7,7 +7,7 @@ on:
       - main
 jobs:
   bigbookofr_bot-post:
-    runs-on: windows-latest
+    runs-on: macOS-latest
     
     steps:
       - uses: actions/checkout@main
