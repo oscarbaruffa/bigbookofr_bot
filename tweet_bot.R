@@ -36,7 +36,7 @@ book <- sample_n(books_source, 1) %>%
 
 book
 
-book_status = paste(book[1, "title"], book[1, "url"], sep="\n")
+book_status = paste(book[1, "title"], "#RStats", book[1, "url"], sep="\n")
 
 book_status
 
