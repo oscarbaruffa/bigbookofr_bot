@@ -11,7 +11,7 @@ library("tidyr")
 library("stringr")
 
 
-# Comment to trigger diff for testing
+# Comment to trigger diff for testing.
 
 # Load data ---------------------------------------------------------------
 
