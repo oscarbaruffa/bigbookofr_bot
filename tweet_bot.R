@@ -50,7 +50,7 @@ rbot_token <- rtweet::create_token(
   consumer_secret = Sys.getenv("RBOT_TWITTER_CONSUMER_API_SECRET"),
   access_token = Sys.getenv("RBOT_TWITTER_ACCESS_TOKEN"),
   access_secret = Sys.getenv("RBOT_TWITTER_ACCESS_TOKEN_SECRET"),
-  set_renv = TRUE)
+  set_renv = FALSE)
 
 # auth <-  rtweet_bot(
 #   api_key = Sys.getenv("RBOT_TWITTER_CONSUMER_API_KEY"),
