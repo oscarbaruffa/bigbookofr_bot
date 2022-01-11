@@ -29,9 +29,10 @@ book <- sample_n(books_source, 1) %>%
   mutate(url = paste0(
     "https://bigbookofr.com/",
     str_replace_all(str_to_lower(chapters), " ", "-"),
+    str_replace_all((chapters), ",", ""),
     ".html#",
-    str_replace_all(str_to_lower(title), " ", "-")
-  ))
+    str_replace_all(str_to_lower(title), " ", "-"),
+    str_replace_all((title), ",", "")))
 
 book
 
