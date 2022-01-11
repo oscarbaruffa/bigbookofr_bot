@@ -34,7 +34,7 @@ book <- sample_n(books_source, 1)  %>%
   mutate(title_clean = str_replace_all((title_clean), ",", "")) %>% 
   mutate(title_clean = str_replace_all((title_clean), "  ", " ")) %>% 
   mutate(title_clean = str_replace_all((title_clean), "'", "")) %>% 
-  
+  mutate(title_clean = str_replace_all((title_clean), "&", "")) %>% 
   mutate(url = paste0(
     "https://bigbookofr.com/",
     chapters_clean,
