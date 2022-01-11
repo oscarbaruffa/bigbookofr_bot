@@ -25,14 +25,20 @@ head(books_source)
 
 # Choose book and generate url-------------------------------------------------------------
 
-book <- sample_n(books_source, 1) %>%
+
+book <- sample_n(books_source, 1)  %>% 
+  mutate(chapters_clean = str_replace_all(str_to_lower(chapters), " ", "-")) %>% 
+  mutate(chapters_clean = str_replace_all((chapters_clean), ",", "")) %>% 
+  mutate(chapters_clean = str_replace_all((chapters_clean), "  ", " ")) %>% 
+  mutate(title_clean = str_replace_all(str_to_lower(title), " ", "-")) %>% 
+  mutate(title_clean = str_replace_all((title_clean), ",", "")) %>% 
+  mutate(title_clean = str_replace_all((title_clean), "  ", " ")) %>% 
+  
   mutate(url = paste0(
     "https://bigbookofr.com/",
-    str_replace_all(str_to_lower(chapters), " ", "-"),
-    str_replace_all((chapters), ",", ""),
+    chapters_clean,
     ".html#",
-    str_replace_all(str_to_lower(title), " ", "-"),
-    str_replace_all((title), ",", "")))
+    title_clean))
 
 book
 
