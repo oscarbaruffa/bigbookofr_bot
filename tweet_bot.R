@@ -30,8 +30,9 @@ book <-
   
   # #for testing
   # books_source %>%
-  # filter(title == "Bookdown archive") %>%
-  # 
+  # filter(title == "APIs for social scientists: A collaborative review") %>%
+  # head(1) %>% 
+
   
   #for production
   sample_n(books_source, 1)  %>% 
@@ -43,6 +44,7 @@ book <-
   mutate(title_clean = str_replace_all((title_clean), "  ", " ")) %>% 
   mutate(title_clean = str_replace_all((title_clean), "'", "")) %>% 
   mutate(title_clean = str_replace_all((title_clean), "&", "")) %>% 
+  mutate(title_clean = str_replace_all((title_clean), ":", "")) %>% 
   mutate(url = paste0(
     "https://bigbookofr.com/",
     chapters_clean,
