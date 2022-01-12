@@ -27,14 +27,14 @@ head(books_source)
 
 
 book <- 
-  #for testing
   
-  # books_source %>% 
-  # filter(title == "Bookdown archive") %>% 
-  
+  # #for testing
+  # books_source %>%
+  # filter(title == "Bookdown archive") %>%
+  # 
   
   #for production
- # sample_n(books_source, 1)  %>% 
+  sample_n(books_source, 1)  %>% 
   mutate(chapters_clean = str_replace_all(str_to_lower(chapters), " ", "-")) %>% 
   mutate(chapters_clean = str_replace_all((chapters_clean), ",", "")) %>% 
   mutate(chapters_clean = str_replace_all((chapters_clean), "  ", " ")) %>% 
