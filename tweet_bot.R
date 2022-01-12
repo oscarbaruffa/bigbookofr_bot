@@ -33,8 +33,6 @@ book <- sample_n(books_source, 1) %>%
     str_replace_all(str_to_lower(title), " ", "-")
   ))
 
-book
-
 authors <-
   book %>% 
   select(contains("author")) %>% 
@@ -42,15 +40,25 @@ authors <-
 
 #book_status = paste(book[1, "title"], "#RStats", book[1, "url"], sep="\n")
 
-book_status <-
-  book %>%
-  glue::glue_data("{title}",
-                  " by ",
-                  glue::glue_collapse(na.omit(authors), sep = ", ", last = " and "),
-                  "
-                  
-                  {url}
-                  #RStats")
+if (all(is.na(authors))) {
+  book_status <-
+    book %>%
+    glue::glue_data("{title}
+                    
+                    {url}
+                    #RStats")
+} else {
+  book_status <-
+    book %>%
+    glue::glue_data("{title}",
+                    " by ",
+                    glue::glue_collapse(na.omit(authors), sep = ", ", last = " and "),
+                    "
+                    
+                    {url}
+                    #RStats")
+  }
+
 
 book_status
 
