@@ -1,0 +1,71 @@
+---
+title: "bbofr updates template"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+# Load libraries ----------------------------------------------------------
+
+library("googlesheets4")
+library("dplyr")
+library("tidyr")
+library("stringr")
+
+# Comment to trigger diff for testing.
+
+# Load data ---------------------------------------------------------------
+
+gs4_deauth()
+updates <-
+  read_sheet(
+    "https://docs.google.com/spreadsheets/d/1vufdtrIzF5wbkWZUG_HGIBAXpT1C4joPx2qTh5aYzDg",
+    sheet = "books" ) %>% 
+   filter(batch_add == 2)
+
+# Choose book and generate url-------------------------------------------------------------
+
+updates <- updates %>% 
+ 
+  mutate(chapters_clean = str_replace_all(str_to_lower(chapters), " ", "-")) %>% 
+  mutate(chapters_clean = str_replace_all((chapters_clean), ",", "")) %>% 
+  mutate(chapters_clean = str_replace_all((chapters_clean), "  ", " ")) %>% 
+  mutate(title_clean = str_replace_all(str_to_lower(title), " ", "-")) %>% 
+  mutate(title_clean = str_replace_all((title_clean), ",", "")) %>% 
+  mutate(title_clean = str_replace_all((title_clean), "  ", " ")) %>% 
+  mutate(title_clean = str_replace_all((title_clean), "'", "")) %>% 
+  mutate(title_clean = str_replace_all((title_clean), "&", "")) %>% 
+  mutate(title_clean = str_replace_all((title_clean), ":", "")) %>% 
+  mutate(url = paste0(
+    "https://bigbookofr.com/",
+    chapters_clean,
+    ".html#",
+    title_clean))
+
+
+updates <-
+    updates %>%
+    mutate(entry = paste(title, description,url), sep="\n")
+
+
+
+
+
+```
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
