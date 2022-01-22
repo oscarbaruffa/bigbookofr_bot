@@ -28,10 +28,10 @@ head(books_source)
 
 book <- 
   
-  # #for testing
+  #for testing
   # books_source %>%
-  # filter(title == "APIs for social scientists: A collaborative review") %>%
-  # head(1) %>% 
+  # filter(title == "A Business Analyst’s Introduction to Business Analytics") %>%
+  # head(1) %>%
 
   
   #for production
@@ -42,7 +42,7 @@ book <-
   mutate(title_clean = str_replace_all(str_to_lower(title), " ", "-")) %>% 
   mutate(title_clean = str_replace_all((title_clean), ",", "")) %>% 
   mutate(title_clean = str_replace_all((title_clean), "  ", " ")) %>% 
-  mutate(title_clean = str_replace_all((title_clean), "'", "")) %>% 
+  mutate(title_clean = str_replace_all((title_clean), "'|’", "")) %>% 
   mutate(title_clean = str_replace_all((title_clean), "&", "")) %>% 
   mutate(title_clean = str_replace_all((title_clean), ":", "")) %>% 
   mutate(url = paste0(
