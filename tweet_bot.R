@@ -48,7 +48,7 @@ book <-
   mutate(url = paste0(
     "https://bigbookofr.com/",
     chapters_clean,
-    ".html?utm_source=BigBookofR_twitter&utm_medium=Bot#",
+    ".html#",
     title_clean))
 
 authors <-
