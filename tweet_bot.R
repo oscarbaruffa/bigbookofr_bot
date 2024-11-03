@@ -36,7 +36,7 @@ book <-
   
   #for production
   sample_n(books_source, 1)  %>% 
-  mutate(chapters_clean = str_replace_all(str_to_lower(chapters), " ", "-")) %>% 
+  mutate(chapters_clean = str_replace_all(str_to_lower(chapters), " ", "%20")) %>% 
   mutate(chapters_clean = str_replace_all((chapters_clean), ",", "")) %>% 
   mutate(chapters_clean = str_replace_all((chapters_clean), "  ", " ")) %>% 
   mutate(title_clean = str_replace_all(str_to_lower(title), " ", "-")) %>% 
@@ -46,7 +46,7 @@ book <-
   mutate(title_clean = str_replace_all((title_clean), "&", "")) %>% 
   mutate(title_clean = str_replace_all((title_clean), ":", "")) %>% 
   mutate(url = paste0(
-    "https://bigbookofr.com/",
+    "https://bigbookofr.com/chapters/",
     chapters_clean,
     ".html#",
     title_clean))
