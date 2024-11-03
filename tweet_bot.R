@@ -3,7 +3,7 @@
 # Load libraries ----------------------------------------------------------
 
 library("googlesheets4")
-library("rtweet")
+library("bskyr")
 library("dplyr")
 library("tidyr")
 library("stringr")
@@ -82,18 +82,11 @@ book_status
 
 # Send tweet --------------------------------------------------------------
 
-# Create a token containing your Twitter keys
-rbot_token <- rtweet::create_token(
-  app = "BigBookofR",
-  # the name of the Twitter app
-  consumer_key = Sys.getenv("RBOT_TWITTER_CONSUMER_API_KEY"),
-  consumer_secret = Sys.getenv("RBOT_TWITTER_CONSUMER_API_SECRET"),
-  access_token = Sys.getenv("RBOT_TWITTER_ACCESS_TOKEN"),
-  access_secret = Sys.getenv("RBOT_TWITTER_ACCESS_TOKEN_SECRET"),
-  set_renv = FALSE
-)
+bluesky_user = Sys.getenv("BLUESKY_APP_USER")
+bluesky_pass = Sys.getenv("BLUESKY_APP_PASS")
 
-# Example: post a tweet via the API
-# The keys are in your environment thanks to create_token()
-rtweet::post_tweet(status = book_status,
-                   token = rbot_token)
+set_bluesky_user(bluesky_user)
+set_bluesky_pass(bluesky_pass)
+
+
+bs_post(text = book_status)
