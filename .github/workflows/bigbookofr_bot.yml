@@ -1,10 +1,10 @@
 name: bigbookofr_bot
 on:
-  schedule:
-    - cron: '0 */3 * * *'
-  #push:
-  #  branches:
-  #    - main
+  # schedule:
+  #   - cron: '0 */3 * * *'
+  push:
+   branches:
+     - main
 jobs:
   bigbookofr_bot-post:
     runs-on: macOS-latest
