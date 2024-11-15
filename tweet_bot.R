@@ -72,9 +72,8 @@ if (all(is.na(authors))) {
                     " by ",
                     glue::glue_collapse(na.omit(authors), sep = ", ", last = " and "),
                     "
-                    
-                    {url}
-                    #RStats")
+                    #RStats
+                    {url}")
   }
 
 
