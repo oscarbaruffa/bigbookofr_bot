@@ -7,7 +7,9 @@ on:
   #    - main
 jobs:
   bigbookofr_bot-post:
-    runs-on: macOS-latest
+    # runs-on: macOS-latest
+    runs-on: ubuntu-latest
+    container: rocker/tidyverse:4.4
     
     steps:
       - uses: actions/checkout@main
