@@ -1,7 +1,7 @@
 name: bigbookofr_bot
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '0 */4 * * *'
   # push:
   #  branches:
   #    - main
